@@ -131,4 +131,4 @@ Both follow the same principle: **custom website first, form backend second**.
 
 ## License
 
-Use the same license approach as your FormBridge project, or add a dedicated license file for this repository.
+This project is licensed under the MIT License.
