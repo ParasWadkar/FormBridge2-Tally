@@ -1,35 +1,26 @@
 # FormBridge2-Tally
 
-FormBridge2-Tally is a lightweight web starter that connects a custom website UI to a **Tally** form embed.
-
-It keeps the form area intentionally empty until you provide your Tally URL, so you can design first and connect data collection later.
+I built this as a follow-up to my original FormBridge project. The idea is simple — you want a proper custom website with your own design, but you don't want to build a whole backend just to collect form submissions. So this project uses [Tally](https://tally.so) to handle all of that, while you keep full control of how your site looks.
 
 ---
 
-## Overview
+## What This Is
 
-This project is the Tally-focused continuation of FormBridge.
+FormBridge2-Tally is a lightweight, no-backend web starter that embeds a Tally form directly into a custom HTML/CSS/JS frontend. You get a clean, responsive landing page that you fully own, and Tally handles all the data collection on the backend.
 
-You get:
-
-- A custom, branded frontend page
-- A dedicated form slot for Tally
-- No backend server required
-- Easy drop-in integration by editing one variable
+No servers. No databases. No API layer. Just drop in your Tally link and you're live.
 
 ---
 
-## Why This Project Exists
+## Why I Made This
 
-Early-stage builders often need to:
+Most early-stage projects hit the same wall — you need to launch quickly, but you also need to collect user information (signups, feedback, waitlist entries, etc.). Setting up a backend for that is overkill at early stages, and using a raw Tally embed looks unpolished on a real site.
 
-1. Launch quickly with a polished website
-2. Collect user submissions without building backend infrastructure
+This project solves that by giving you:
 
-FormBridge2-Tally addresses this by combining:
-
-- Fully customizable website UI
-- Reliable hosted form collection via Tally
+- A proper branded frontend you can actually customize
+- A clean slot where your Tally form lives as an iframe
+- A setup so simple you can go from zero to live in under 10 minutes
 
 ---
 
@@ -37,9 +28,9 @@ FormBridge2-Tally addresses this by combining:
 
 ```
 FormBridge2-Tally/
-  index.html     # Main website page
-  style.css      # Visual design and responsive layout
-  script.js      # Tally embed logic (set your URL here)
+  index.html     → Main landing page
+  style.css      → All styles, responsive layout, color variables
+  script.js      → Tally embed logic (this is where you set your URL)
   README.md
 ```
 
@@ -47,88 +38,101 @@ FormBridge2-Tally/
 
 ## How It Works
 
-1. The page loads with an empty form placeholder.
-2. You add your Tally URL in `script.js` by setting `TALLY_FORM_URL`.
-3. The script validates the URL and injects the Tally iframe into the form slot.
-4. Visitors submit data directly through Tally.
+1. The page loads with a placeholder where the form will go
+2. You set your Tally form URL in `script.js` by updating one variable
+3. The script validates the URL and injects the Tally iframe into that slot
+4. From that point on, every submission goes straight to Tally — nothing touches your code
 
 ---
 
-## Quick Start
+## Getting Started
 
-### 1) Open the project
-
-From your workspace:
+### Step 1 — Navigate to the project
 
 ```powershell
 cd "c:\Academic\Self Learning\FormBridge2-Tally"
 ```
 
-### 2) Add your Tally link
+### Step 2 — Add your Tally link
 
-In `script.js`, update:
+Open `script.js` and find this line:
 
 ```js
 const TALLY_FORM_URL = "";
 ```
 
-Example:
+Replace the empty string with your Tally share URL:
 
 ```js
 const TALLY_FORM_URL = "https://tally.so/r/abcd12";
 ```
 
-### 3) Run locally
+You can find this URL by opening your Tally form → Share → Copy link.
 
-Open `index.html` directly in your browser or serve it with any static server.
+### Step 3 — Open it up
 
----
-
-## Customization Guide
-
-- Content text: edit sections in `index.html`
-- Branding and theme: edit color variables in `style.css`
-- Form slot behavior: adjust logic in `script.js`
-- Embed size: change `.tally-iframe` height in `style.css`
+Just open `index.html` in your browser. Or use any static server if you prefer. That's it.
 
 ---
 
-## Notes and Limits
+## Customization
 
-- This project does not handle custom backend validation.
-- Advanced workflows (multi-step logic, third-party automation) should be configured in Tally and external tools.
-- File handling and form capability depend on your Tally plan and form settings.
-- Browser script blockers may prevent third-party embeds in rare cases.
+Everything is split cleanly so it's easy to change one thing without breaking another:
 
----
-
-## Suggested Production Setup
-
-- Host on static platforms like GitHub Pages, Netlify, or Vercel.
-- Add your own domain and SSL.
-- Add analytics (for example, Plausible or Google Analytics) if needed.
-- Keep your Tally form access/permissions configured in Tally dashboard.
+- **Page content** — edit the text and sections directly in `index.html`
+- **Colors and fonts** — all CSS variables are at the top of `style.css`, change them in one place
+- **Form size** — the `.tally-iframe` height is in `style.css`, adjust it to fit your design
+- **Embed behavior** — all the iframe inject logic lives in `script.js`
 
 ---
 
-## Roadmap Ideas
+## Deploying
 
-- Multiple Tally form slots on one page
-- URL parameter prefill support
-- Success-state animations and thank-you sections
-- Optional anti-spam layer (captcha or custom checks)
+This is a fully static project, so you can host it anywhere:
+
+- **GitHub Pages** — free, easy, works out of the box for public repos
+- **Netlify** — drag and drop the folder and you're live
+- **Vercel** — same as Netlify, great if you're already using it for other things
+
+For a proper production setup I'd also recommend:
+- Connecting a custom domain
+- Enabling HTTPS (both Netlify and Vercel handle this automatically)
+- Adding lightweight analytics if you need them (Plausible is a good privacy-friendly option)
 
 ---
 
-## Comparison With FormBridge
+## Things to Know
 
-- FormBridge: focused on Google Forms posting
-- FormBridge2-Tally: focused on Tally iframe integration
+- This project does not do any custom form validation on the frontend beyond basic HTML. If you need conditional logic, required field rules, or multi-step flows, configure all of that inside Tally.
+- File uploads, payment fields, and advanced features depend on your Tally plan.
+- In rare cases, browser extensions that block third-party iframes (like aggressive ad blockers) might prevent the embed from loading. Nothing you can do about that from the frontend side.
 
-Both follow the same principle: **custom website first, form backend second**.
+---
+
+## What's Next (Roadmap Ideas)
+
+Some things I'm thinking about adding down the line:
+
+- Support for multiple Tally form slots on one page
+- URL parameter prefill so you can pass in user data automatically
+- A proper success state animation after form submission
+- Optional lightweight anti-spam layer
+
+---
+
+## How This Compares to FormBridge
+
+| | FormBridge | FormBridge2-Tally |
+|---|---|---|
+| **Form backend** | Google Forms (POST) | Tally (iframe embed) |
+| **Integration method** | HTML form with `action` URL | Injected iframe via JS |
+| **Setup** | Map `entry.ID` fields manually | Paste one URL |
+| **Customization** | Full control over fields | Full control over page design |
+
+Both follow the same principle — build your frontend your way, let someone else handle the data.
 
 ---
 
 ## License
 
-This project is licensed under the MIT License.
+MIT — use it however you want, for personal projects or client work.
