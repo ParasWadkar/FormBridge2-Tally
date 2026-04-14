@@ -1,6 +1,6 @@
 # FormBridge2-Tally
 
-I built this as a follow-up to my original FormBridge project. The idea is simple — you want a proper custom website with your own design, but you don't want to build a whole backend just to collect form submissions. So this project uses [Tally](https://tally.so) to handle all of that, while you keep full control of how your site looks.
+I built this as a follow-up to my original [FormBridge](https://github.com/ParasWadkar/FormBridge) project. The idea is simple — you want a proper custom website with your own design, but you don't want to build a whole backend just to collect form submissions. So this project uses [Tally](https://tally.so) to handle all of that, while you keep full control of how your site looks.
 
 ---
 
@@ -122,14 +122,14 @@ Some things I'm thinking about adding down the line:
 
 ## How This Compares to FormBridge
 
-| | FormBridge | FormBridge2-Tally |
+| | [FormBridge](https://github.com/ParasWadkar/FormBridge) | FormBridge2-Tally |
 |---|---|---|
 | **Form backend** | Google Forms (POST) | Tally (iframe embed) |
 | **Integration method** | HTML form with `action` URL | Injected iframe via JS |
 | **Setup** | Map `entry.ID` fields manually | Paste one URL |
 | **Customization** | Full control over fields | Full control over page design |
 
-Both follow the same principle — build your frontend your way, let someone else handle the data.
+Both follow the same principle — build your frontend your way, let someone else handle the data. Check out [FormBridge](https://github.com/ParasWadkar/FormBridge) if you need the Google Forms version.
 
 ---
 
