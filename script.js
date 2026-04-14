@@ -1,5 +1,4 @@
-// Paste your Tally form link here later, for example: https://tally.so/r/yourFormId
-const TALLY_FORM_URL = "";
+const TALLY_FORM_URL = "https://tally.so/r/q4KlGO";
 
 const slot = document.getElementById("tally-form-slot");
 
